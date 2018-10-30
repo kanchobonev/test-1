@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01.Baking_Masterclass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            int student = int.Parse(Console.ReadLine());
+            double priceFlour = double.Parse(Console.ReadLine());
+            double priceEgg = double.Parse(Console.ReadLine());
+            double priceApron = double.Parse(Console.ReadLine());
+
+            int freePackeges = 0;
+
+            for (int i = 0; i < student/5; i++)
+            {
+                freePackeges++;
+            }
+
+            double moneyNeeded = (student - freePackeges) * priceFlour + student * priceEgg * 10 + Math.Ceiling(0.2*student + student) * priceApron;
+
+            
+            if (moneyNeeded <= budget)
+            {
+
+                Console.WriteLine($"Items purchased for {moneyNeeded:f2}$.");
+            }
+            else
+            {
+                double lessMoney = moneyNeeded - budget;    
+                Console.WriteLine($"{lessMoney} more needed.");
+            }
+        }
+    }
+}
